@@ -6,6 +6,8 @@ import (
 	"strings"
 )
 
+// Description: https://leetcode.com/problems/defanging-an-ip-address/
+
 type DefangedIpAddress struct {}
 
 func (d *DefangedIpAddress) Defang(input string) string {

@@ -6,6 +6,8 @@ import (
 	"strconv"
 )
 
+// Description: https://leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/
+
 type ParticioningDeciBanary struct {}
 
 func (p *ParticioningDeciBanary) Solve(input string) int {

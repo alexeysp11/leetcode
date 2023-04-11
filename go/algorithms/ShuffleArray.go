@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+// Description: https://leetcode.com/problems/shuffle-the-array/
+
 type ShuffleArray struct {}
 
 func (s *ShuffleArray) Shuffle(input []int, n int) []int {

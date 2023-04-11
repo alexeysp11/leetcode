@@ -19,11 +19,6 @@ namespace Studying.Leetcode.Graphs
             }
         }
 
-        // private class Node
-        // {
-        //     public 
-        // }
-
         public void Execute()
         {
             System.Console.WriteLine("Largest Color Value in a Directed Graph\n".ToUpper()); 
