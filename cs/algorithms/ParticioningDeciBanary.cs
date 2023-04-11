@@ -7,6 +7,7 @@ namespace Studying.Leetcode.Alogithms
     {
         public void Execute()
         {
+            System.Console.WriteLine("Partitioning into minimum number of deci-binary numbers\n".ToUpper()); 
             // Example 1:
             // Input: n = "32"
             // Output: 3
