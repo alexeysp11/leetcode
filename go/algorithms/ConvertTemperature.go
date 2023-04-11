@@ -20,8 +20,8 @@ func (t *Temperature) Init(celsius float32) {
 	}
 	
 	t.Celsius = celsius; 
-	t.Kelvin = celsius + 273.15; 
-	t.Farenheit = celsius * 1.80 + 32.00; 
+	t.Kelvin = celsius + 273.15
+	t.Farenheit = celsius * 1.80 + 32.00
 }
 
 type ConvertTemperature struct {
