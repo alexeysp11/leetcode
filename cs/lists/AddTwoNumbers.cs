@@ -12,13 +12,16 @@ namespace Studying.Leetcode.Lists
         {
             public int Val = 0; 
             public Node Next = null; 
+            private string ExceptionMsg = "Value of a node could not be less than 0 and bigger than 9"; 
 
             public Node(int val)
             {
+                if (val < 0 || val > 9) throw new System.Exception(ExceptionMsg); 
                 Val = val; 
             }
             public Node(int val, Node next)
             {
+                if (val < 0 || val > 9) throw new System.Exception(ExceptionMsg); 
                 Val = val; 
                 Next = next; 
             }
@@ -29,10 +32,20 @@ namespace Studying.Leetcode.Lists
         /// </summary>
         private class LinkedList
         {
+            #region Properties
             /// <summary>
             /// 
             /// </summary>
             public Node FirstNode = null; 
+            /// <summary>
+            /// 
+            /// </summary>
+            public Node LastNode = null; 
+            /// <summary>
+            /// 
+            /// </summary>
+            public int Length = 0; 
+            #endregion  // Properties
 
             #region Constructors
             /// <summary>
@@ -65,17 +78,13 @@ namespace Studying.Leetcode.Lists
             /// </summary>
             public void AddNode(int node)
             {
-                if (FirstNode == null) 
-                { 
-                    FirstNode = new Node(node);
-                    return; 
-                }
-                Node nodeObj = FirstNode; 
-                while (nodeObj.Next != null)
-                {
-                    nodeObj = nodeObj.Next; 
-                }
-                nodeObj.Next = new Node(node); 
+                var nextNode = new Node(node);
+                if (FirstNode == null)
+                    FirstNode = nextNode;
+                else 
+                    LastNode.Next = nextNode; 
+                LastNode = nextNode; 
+                Length += 1; 
             }
 
             /// <summary>
