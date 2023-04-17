@@ -1,4 +1,4 @@
-namespace Studying.Leetcode.Alogithms
+namespace Studying.Leetcode.Algorithms
 {
     /// <summary>
     /// Description: https://leetcode.com/problems/defanging-an-ip-address/
