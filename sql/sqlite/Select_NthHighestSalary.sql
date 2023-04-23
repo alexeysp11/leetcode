@@ -1,4 +1,3 @@
--- Description: https://leetcode.com/problems/second-highest-salary/
 
 -- Example 1:
 -- Input: 
@@ -9,12 +8,16 @@
 -- | 1  | 100    |
 -- | 2  | 200    |
 -- | 3  | 300    |
+-- | 4  | 800    |
+-- | 5  | 400    |
+-- | 5  | 600    |
+-- | 5  | 700    |
 -- +----+--------+
--- Output: 
+-- Output (4th): 
 -- +---------------------+
--- | SecondHighestSalary |
+-- | NthHighestSalary    |
 -- +---------------------+
--- | 200                 |
+-- | 400                 |
 -- +---------------------+
 
 -- Example 2:
@@ -25,14 +28,17 @@
 -- +----+--------+
 -- | 1  | 100    |
 -- +----+--------+
--- Output: 
+-- Output (4th): 
 -- +---------------------+
--- | SecondHighestSalary |
+-- | NthHighestSalary    |
 -- +---------------------+
 -- | null                |
 -- +---------------------+
 
-SELECT max(t.salary) AS SecondHighestSalary
-FROM (
-    SELECT e.salary FROM Employee e WHERE e.salary <> (SELECT max(salary) FROM Employee)
-) t; 
+DROP IF EXISTS TABLE tmp_employee; 
+CREATE TEMPORARY TABLE tmp_employee (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+    salary NUMERIC(10,2)
+);
+INSERT INTO tmp_employee (salary) SELECT salary FROM Employee ORDER BY salary DESC; 
+SELECT t.salary FROM tmp_employee t WHERE t.id = 4; 

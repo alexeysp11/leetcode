@@ -32,7 +32,10 @@
 -- | null                |
 -- +---------------------+
 
-SELECT max(t.salary) AS SecondHighestSalary
-FROM (
-    SELECT e.salary FROM Employee e WHERE e.salary <> (SELECT max(salary) FROM Employee)
-) t; 
+CREATE TABLE IF NOT EXISTS Employee (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+    salary NUMERIC(10, 2)
+); 
+INSERT INTO Employee (salary) VALUES (100); 
+INSERT INTO Employee (salary) VALUES (200); 
+INSERT INTO Employee (salary) VALUES (300); 
