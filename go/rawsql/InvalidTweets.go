@@ -12,7 +12,7 @@ type InvalidTweets struct {}
 func (t *InvalidTweets) Execute() {
 	fmt.Println(strings.ToUpper("Invalid Tweets\n"))
 
-	database, err := sql.Open("sqlite3", "C:\\Users\\123\\Documents\\studying\\leetcode\\data\\sqlite3\\InvalidTweets.db")
+	database, err := sql.Open("sqlite3", "../data/sqlite3/InvalidTweets.db")
 	if (err != nil) {
 		fmt.Println(err)
 	}
