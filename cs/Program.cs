@@ -9,7 +9,7 @@
             // ILeetcodeProblem problem = new Studying.Leetcode.Algorithms.SlotsInCalendar(); 
             // ILeetcodeProblem problem = new Studying.Leetcode.Lists.ReverseLinkedList(); 
             // ILeetcodeProblem problem = new Studying.Leetcode.Tree.ReplaceChangedElementInTree(); 
-            ILeetcodeProblem problem = new Studying.Leetcode.Orm.Blogging(); 
+            ILeetcodeProblem problem = new Studying.Leetcode.Orm.SlotsInCalendar(); 
             problem.Execute();
         }
     }

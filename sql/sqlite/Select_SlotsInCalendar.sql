@@ -8,26 +8,26 @@
 
 -- get person and their daily bounds for today
 select 
-    p.id as person_id, 
+    p.person_id as person_id, 
     --p.name as person_name, 
     d.begin_datetime as daily_begin, 
     d.end_datetime as daily_end 
 from person p 
-left join daily_bound d on d.person_id = p.id
+left join daily_bound d on d.person_id = p.person_id
 where d.begin_datetime >= strftime('%Y-%m-%d 00:00')
     and d.end_datetime <= strftime('%Y-%m-%d 23:59');
 
 -- get a list of busy slots for each person in today's daily bounds 
 select 
-    p.id as person_id, 
+    p.person_id as person_id, 
     --p.name as person_name, 
     a.begin_datetime as activity_begin, 
     a.end_datetime as activity_end, 
     d.begin_datetime as daily_begin, 
     d.end_datetime as daily_end 
 from person p 
-left join activity a on a.person_id = p.id
-left join daily_bound d on d.person_id = p.id
+left join activity a on a.person_id = p.person_id
+left join daily_bound d on d.person_id = p.person_id
 where d.begin_datetime >= strftime('%Y-%m-%d 00:00')
     and d.end_datetime <= strftime('%Y-%m-%d 23:59')
     and a.begin_datetime >= d.begin_datetime 

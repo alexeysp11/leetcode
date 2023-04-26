@@ -281,10 +281,7 @@ namespace Studying.Leetcode.Algorithms
             }
 
             // Filter by duration 
-            foreach (var item in tmp)
-            {
-                if (item.GetDuration() >= duration.ToTimeSpan()) result.Add(item); 
-            }
+            foreach (var item in tmp) if (item.GetDuration() >= duration.ToTimeSpan()) result.Add(item); 
 
             return result; 
         }
