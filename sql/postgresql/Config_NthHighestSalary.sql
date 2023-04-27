@@ -1,7 +1,7 @@
 
 -- Example 1:
 -- Input: 
--- Employee table:
+-- leetcode_problems.employee table:
 -- +----+--------+
 -- | id | salary |
 -- +----+--------+
@@ -22,7 +22,7 @@
 
 -- Example 2:
 -- Input: 
--- Employee table:
+-- leetcode_problems.employee table:
 -- +----+--------+
 -- | id | salary |
 -- +----+--------+
@@ -35,15 +35,15 @@
 -- | null                |
 -- +---------------------+
 
-DROP TABLE IF EXISTS Employee; 
-CREATE TABLE IF NOT EXISTS Employee (
-    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+DROP TABLE IF EXISTS leetcode_problems.employee; 
+CREATE TABLE IF NOT EXISTS leetcode_problems.employee (
+    id SERIAL PRIMARY KEY NOT NULL, 
     salary NUMERIC(10, 2)
 ); 
-INSERT INTO Employee (salary) VALUES (100); 
-INSERT INTO Employee (salary) VALUES (200); 
-INSERT INTO Employee (salary) VALUES (300); 
-INSERT INTO Employee (salary) VALUES (800); 
-INSERT INTO Employee (salary) VALUES (400); 
-INSERT INTO Employee (salary) VALUES (600); 
-INSERT INTO Employee (salary) VALUES (700); 
+INSERT INTO leetcode_problems.employee (salary) VALUES (100); 
+INSERT INTO leetcode_problems.employee (salary) VALUES (200); 
+INSERT INTO leetcode_problems.employee (salary) VALUES (300); 
+INSERT INTO leetcode_problems.employee (salary) VALUES (800); 
+INSERT INTO leetcode_problems.employee (salary) VALUES (400); 
+INSERT INTO leetcode_problems.employee (salary) VALUES (600); 
+INSERT INTO leetcode_problems.employee (salary) VALUES (700); 

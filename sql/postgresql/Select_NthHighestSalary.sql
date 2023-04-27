@@ -10,8 +10,8 @@
 -- | 3  | 300    |
 -- | 4  | 800    |
 -- | 5  | 400    |
--- | 5  | 600    |
--- | 5  | 700    |
+-- | 6  | 600    |
+-- | 7  | 700    |
 -- +----+--------+
 -- Output (4th): 
 -- +---------------------+
@@ -35,15 +35,26 @@
 -- | null                |
 -- +---------------------+
 
-DROP TABLE IF EXISTS Employee; 
-CREATE TABLE IF NOT EXISTS Employee (
-    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
-    salary NUMERIC(10, 2)
-); 
-INSERT INTO Employee (salary) VALUES (100); 
-INSERT INTO Employee (salary) VALUES (200); 
-INSERT INTO Employee (salary) VALUES (300); 
-INSERT INTO Employee (salary) VALUES (800); 
-INSERT INTO Employee (salary) VALUES (400); 
-INSERT INTO Employee (salary) VALUES (600); 
-INSERT INTO Employee (salary) VALUES (700); 
+CREATE OR REPLACE FUNCTION leetcode_problems.f_GetNthHighestSalary(aOrderNum INTEGER)
+RETURNS NUMERIC(10, 2) AS $$
+DECLARE
+    rec record; 
+    i INTEGER; 
+BEGIN 
+    i := 1; 
+    FOR rec IN 
+        SELECT emp.salary
+        FROM leetcode_problems.employee emp
+        ORDER BY emp.salary DESC
+    LOOP 
+        IF i = aOrderNum THEN 
+            RETURN rec.salary; 
+        END IF; 
+        i := i + 1; 
+    END LOOP; 
+
+    RETURN NULL; 
+END; 
+$$ LANGUAGE plpgsql;
+
+SELECT leetcode_problems.f_GetNthHighestSalary(4) as NthHighestSalary; 
