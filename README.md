@@ -23,8 +23,36 @@ Then you need use ".open FILENAME" to open on a persistent database. For example
 .open data/sqlite3/EmployeeUniqueId.db
 ```
 
-## TODO 
+If you're using C in golang, first you need to build you app (go to `go` folder and execute build command): 
+```
+go build -o bin/leetcode.exe main.go 
+```
+or simply: 
+```
+_build.cmd
+```
 
-1. Troubleshoot database connections in Go (the problem with gcc compliler). There're a few possible solution here: 
-- to use another gcc compiler (I tried to use **mingw32** and **mingw64**); 
-- write code for communication with the databases in another language (e.g. C/C++, C# or Python might be an option). 
+## Troubleshooting 
+
+### Go 
+
+If you're facing problem with gcc compliler: `runtime/cgo: C:\Program Files\Go\pkg\tool\windows_amd64\cgo.exe: exit status 2`, you need to take the following steps: 
+1. Install `TDM-GCC` compiler from [GitHub repo](https://github.com/jmeubank/tdm-gcc) (go to releases and download exe installer) or from [TDM-GCC site](https://jmeubank.github.io/tdm-gcc/download/). 
+
+2. Open command line and execute: 
+```
+go env GOENV
+```
+This command returns you a path to env file. 
+
+3. Open env file in any text editor. 
+
+4. Execute in command line:
+```
+where gcc
+```
+Copy the path of `TDM-GCC` compiler. 
+
+5. Set `CC` parameter in env file to the path of gcc. 
+
+It's also possible to use [SWIG compiler](https://github.com/swig/swig) to compile C/C++ code in golang apps, but I haven't test it yet. 
