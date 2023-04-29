@@ -2,6 +2,14 @@
 
 This repository contains solutions for **leetcode** problems in C#, Go, Python, JS and plain SQL. 
 
+## How to run 
+
+If you want to run program in this repository, in most cases it's better to build the app and execute it as `exe` file (since you might use some libraries under the hood that need to compiled). So, go to the folder of a project (the folder name might be `cs`, `golang` etc) and execute the following command: 
+```
+_run.cmd
+```
+This command creates `bin` folder, builds the app and executes it as `exe` file. 
+
 ## External libraries 
 
 ### SQLite
@@ -21,15 +29,6 @@ _runsqlite3.cmd
 Then you need use ".open FILENAME" to open on a persistent database. For example: 
 ```
 .open data/sqlite3/EmployeeUniqueId.db
-```
-
-If you're using C in golang, first you need to build you app (go to `go` folder and execute build command): 
-```
-go build -o bin/leetcode.exe main.go 
-```
-or simply: 
-```
-_build.cmd
 ```
 
 ## Troubleshooting 
@@ -53,6 +52,6 @@ where gcc
 ```
 Copy the path of `TDM-GCC` compiler. 
 
-5. Set `CC` parameter in env file to the path of gcc. 
+5. Set `CC` parameter in env file to the path of `TDM-GCC` compiler. 
 
-It's also possible to use [SWIG compiler](https://github.com/swig/swig) to compile C/C++ code in golang apps, but I haven't test it yet. 
+It's also possible to use [SWIG compiler](https://github.com/swig/swig) to compile C/C++ code in golang apps, but I haven't tested it yet. 
