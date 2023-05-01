@@ -12,7 +12,7 @@ func main() {
 	// a := new(algorithms.ShuffleArray)
 	// a := new(arrays.ArrayConcatenation)
 	// a := new(graphs.CloneGraph)
-	a := new(rawsql.InvalidTweets)
+	a := new(rawsql.NthHighestSalary)
 	// a := new(lists.AddTwoNumbers)
 	a.Execute() 
 }

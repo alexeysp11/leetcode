@@ -35,10 +35,11 @@
 -- | null                |
 -- +---------------------+
 
-DROP IF EXISTS TABLE tmp_employee; 
+DROP TABLE tmp_employee; 
 CREATE TEMPORARY TABLE tmp_employee (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
     salary NUMERIC(10,2)
 );
-INSERT INTO tmp_employee (salary) SELECT salary FROM Employee ORDER BY salary DESC; 
+DELETE FROM tmp_employee; 
+INSERT INTO tmp_employee (salary) SELECT DISTINCT salary FROM Employee ORDER BY salary DESC; 
 SELECT t.salary FROM tmp_employee t WHERE t.id = 4; 
