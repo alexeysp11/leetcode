@@ -1,16 +1,23 @@
-﻿namespace Studying.Leetcode
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
+
+namespace Studying.Leetcode
 {
     class Program
     {
         static void Main(string[] args)
         {
-            // ILeetcodeProblem problem = new Studying.Leetcode.Graphs.LargestColorInDirectedGraph(); 
-            // ILeetcodeProblem problem = new Studying.Leetcode.Arrays.ArrayConcatenation(); 
-            // ILeetcodeProblem problem = new Studying.Leetcode.Algorithms.SlotsInCalendar(); 
-            // ILeetcodeProblem problem = new Studying.Leetcode.Lists.ReverseLinkedList(); 
-            // ILeetcodeProblem problem = new Studying.Leetcode.Tree.ReplaceChangedElementInTree(); 
-            // ILeetcodeProblem problem = new Studying.Leetcode.Orm.SlotsInCalendar(); 
-            ILeetcodeProblem problem = new Studying.Leetcode.Nosql.EmployeeUniqueId(); 
+            string filename = "app.config"; 
+            XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
+            AppSettings appSettings;
+            using (Stream reader = new FileStream(filename, FileMode.Open))
+            {
+                appSettings = (AppSettings)serializer.Deserialize(reader);
+            }
+            var type = System.Type.GetType(appSettings.ClassName); 
+            ILeetcodeProblem problem = System.Activator.CreateInstance(type) as ILeetcodeProblem;
             problem.Execute();
         }
     }

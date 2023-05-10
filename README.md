@@ -2,11 +2,24 @@
 
 This repository contains solutions for **leetcode** problems in C#, Go, Python, JS and plain SQL. 
 
+## Configuration 
+
+In `cs` you can find `app.config` file. 
+In this file you can easily specify, which algorithm will be executed, by setting parameter `ClassName`, for example: 
+```XML
+<?xml version="1.0" encoding="utf-8" ?>
+<AppSettings>
+    <ProgramName>leetcode</ProgramName>
+    <ProgramDescription>Test program for solving leetcode problems</ProgramDescription>
+    <ClassName>Studying.Leetcode.Graphs.RemovingIslands</ClassName>
+</AppSettings>
+```
+
 ## How to run 
 
 If you want to run program in this repository, in most cases it's better to build the app and execute it as `exe` file (since you might use some libraries under the hood that need to compiled). So, go to the folder of a project (the folder name might be `cs`, `golang` etc) and execute the following command: 
 ```
-_run.cmd
+run.cmd
 ```
 This command creates `bin` folder, builds the app and executes it as `exe` file. 
 

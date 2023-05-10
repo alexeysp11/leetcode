@@ -12,4 +12,10 @@
     <PackageReference Include="MongoDB.Driver" Version="2.19.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="app.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>  
+  </ItemGroup>
+
 </Project>
