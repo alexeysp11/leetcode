@@ -39,7 +39,31 @@ namespace Studying.Leetcode.Graphs
 
             public Matrix RemoveIslands()
             {
-                return this; 
+                Matrix matrix = new Matrix(this.Rows, this.Cols); 
+                for (int i = 0; i < this.Rows; i++)
+                {
+                    bool isFirstOrLastRow = i == 0 || i == this.Rows - 1; 
+                    for (int j = 0; j < this.Cols; j++)
+                    {
+                        bool isFirstOrLastCol = j == 0 || j == this.Cols - 1; 
+                        matrix.SetPixel(i, j, (isFirstOrLastRow || isFirstOrLastCol ? this.Values[i, j] : 0)); 
+                    }
+                }
+                return matrix; 
+            }
+
+            public override string ToString()
+            {
+                string result = string.Empty; 
+                for (int i = 0; i < this.Rows; i++)
+                {
+                    for (int j = 0; j < this.Cols; j++)
+                    {
+                        result += this.Values[i, j] + " "; 
+                    }
+                    result += "\n"; 
+                }
+                return result; 
             }
 
             private void CheckIndex(int row, int col)
@@ -53,23 +77,18 @@ namespace Studying.Leetcode.Graphs
         {
             System.Console.WriteLine("Remove Islands\n".ToUpper()); 
 
-            Matrix matrix = new Matrix(5, 6); 
+            Matrix matrix = InitMatrix(5, 6); 
             System.Console.WriteLine($"rows: {matrix.Rows}, cols: {matrix.Cols}"); 
-            InitMatrix(matrix); 
 
-            for (int i = 0; i < matrix.Rows; i++)
-            {
-                for (int j = 0; j < matrix.Cols; j++)
-                {
-                    // 
-                    System.Console.Write(matrix.Values[i, j] + " "); 
-                }
-                System.Console.WriteLine(); 
-            }
+            System.Console.WriteLine(matrix.ToString()); 
+
+            System.Console.WriteLine("Result"); 
+            System.Console.WriteLine(matrix.RemoveIslands().ToString()); 
         }
 
-        private void InitMatrix(Matrix matrix)
+        private Matrix InitMatrix(int rows, int cols)
         {
+            Matrix matrix = new Matrix(rows, cols); 
             // 
             matrix.SetPixel(0, 0, 1); 
             matrix.SetPixel(0, 1, 0); 
@@ -109,6 +128,8 @@ namespace Studying.Leetcode.Graphs
             matrix.SetPixel(4, 3, 1); 
             matrix.SetPixel(4, 4, 0); 
             matrix.SetPixel(4, 5, 1); 
+
+            return matrix; 
         }
     }
 }
