@@ -40,6 +40,10 @@ CREATE TABLE OrderDetails (
     Quantity INT,
     Price DECIMAL(10,2)
 );
+CREATE TABLE OrderStatuses (
+    OrderStatusId SERIAL PRIMARY KEY,
+    OrderStatusName VARCHAR(50)
+);
 CREATE TABLE Payments (
     PaymentId SERIAL PRIMARY KEY,
     UserId INT REFERENCES Users(UserId),
@@ -56,10 +60,6 @@ CREATE TABLE PaymentHistory (
     PaymentMethodId INT REFERENCES PaymentMethods(PaymentMethodId),
     PaymentStatus VARCHAR(50),
     PaymentDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-CREATE TABLE OrderStatuses (
-    OrderStatusId SERIAL PRIMARY KEY,
-    OrderStatusName VARCHAR(50)
 );
 
 -- Generate SQL commands for filling tables (INSERT command): 
