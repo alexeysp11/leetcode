@@ -1,9 +1,11 @@
-# FinancialTransactions_Products
+# Views.FinancialTransactions_Products
+
+Задачи, направленные на закрепление практических навыков работы с представлениями.
 
 Конфигурация таблиц для закрепления практических навыков работы с PostgreSQL представлена в файле [Config_FinancialTransactions_Products.sql](../postgresql/Config_FinancialTransactions_Products.sql). 
 Аналогичную конфигурацию и определение таблиц можно использовать для других реляционных баз данных. 
 
-## Представления
+## Задачи
 
 10 задач для закрепления навыков работы с view в PostgreSQL:
 - Создание простого view на основе одной таблицы
