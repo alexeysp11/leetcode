@@ -197,3 +197,8 @@ VALUES
 (8, 3, 'Shipped'),
 (9, 4, 'Delivered'),
 (10, 5, 'Canceled');
+
+-- Additional queries.
+INSERT INTO Orders (UserId) VALUES (4);
+INSERT INTO OrderDetails (OrderId, ProductId, Quantity, Price)
+VALUES (11, 1, 2, 1100.00), (11, 3, 1, 450.00), (11, 9, 1, 61.00);
