@@ -53,11 +53,11 @@
 - Таблицы: Products, OrderDetails
 - Столбцы: ProductId, ProductName, Price
 
-9. Создать представление, которое выводит информацию о пользователях (UserId, FirstName, LastName, Email), у которых суммарная стоимость заказов выше 10000 рублей.
+9. Создать представление, которое выводит информацию о пользователях (UserId, FirstName, LastName, Email), у которых суммарная стоимость заказов выше 200 долларов.
 - Таблицы: Users, Orders, OrderDetails
 - Столбцы: UserId, FirstName, LastName, Email
 
-10. Создать представление, которое выводит информацию о продуктах (ProductId, ProductName, Price), у которых количество заказов больше 5 и цена выше 500 рублей.
+10. Создать представление, которое выводит информацию о продуктах (ProductId, ProductName, Price), у которых количество заказов больше 1 и цена выше 200 долларов.
 - Таблицы: Products, OrderDetails
 - Столбцы: ProductId, ProductName, Price
 
@@ -65,7 +65,7 @@
 - Таблицы: Users, Orders
 - Столбцы: UserId, FirstName, LastName, Email
 
-12. Создать представление, которое выводит информацию о продуктах (ProductId, ProductName, Price), у которых количество заказов меньше 3 и цена меньше 1000 рублей.
+12. Создать представление, которое выводит информацию о продуктах (ProductId, ProductName, Price), у которых количество заказов меньше 2 и цена меньше 250 долларов.
 - Таблицы: Products, OrderDetails
 - Столбцы: ProductId, ProductName, Price
 
@@ -77,9 +77,7 @@
 - Таблицы: Products, OrderDetails, Orders
 - Столбцы: ProductId, ProductName, Price
 
-15. Создать представление, которое
-
-выводит информацию о пользователях (UserId, FirstName, LastName, Email), у которых есть заказы в определенном году.
+15. Создать представление, которое выводит информацию о пользователях (UserId, FirstName, LastName, Email), у которых есть заказы в определенном году.
 - Таблицы: Users, Orders
 - Столбцы: UserId, FirstName, LastName, Email
 

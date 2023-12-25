@@ -1,8 +1,8 @@
-# ForeignKeys.FinancialTransactions_Products
+# ForeignKeys.EmployeeSearch
 
 Задачи, направленные на закрепление практических навыков работы с foreign key.
 
-Конфигурация таблиц для закрепления практических навыков работы с PostgreSQL представлена в файле [Config_FinancialTransactions_Products.sql](../../../sql/postgresql/Config_FinancialTransactions_Products.sql). 
+Конфигурация таблиц для закрепления практических навыков работы с PostgreSQL представлена в файле [Config_EmployeeSearch.sql](../../../sql/postgresql/Config_EmployeeSearch.sql). 
 Аналогичную конфигурацию и определение таблиц можно использовать для других реляционных баз данных. 
 
 ## Задачи
