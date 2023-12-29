@@ -17,15 +17,14 @@ BEGIN
 		INSERT INTO Users (FirstName, LastName, Email, Password) VALUES (aFirstName, aLastName, aEmail, aPassword);
 		COMMIT;
 	EXCEPTION WHEN OTHERS 
-  	THEN
+	THEN
 		GET STACKED DIAGNOSTICS
-    	lErrCode = RETURNED_SQLSTATE,
+		lErrCode = RETURNED_SQLSTATE,
 		lMsgText = MESSAGE_TEXT,
-    	lExcContext = PG_CONTEXT;
+		lExcContext = PG_CONTEXT;
 
-   		RAISE NOTICE 'ERROR CODE: % MESSAGE TEXT: % CONTEXT: %', 
-   		lErrCode, lMsgText, lExcContext;
-  END;
+   		RAISE NOTICE 'ERROR CODE: % MESSAGE TEXT: % CONTEXT: %', lErrCode, lMsgText, lExcContext;
+  	END;
 END;
 $$;
 
