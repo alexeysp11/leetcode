@@ -23,7 +23,7 @@ namespace Studying.Leetcode.Orm
 
             public SlotsInCalendarContext()
             {
-                var folder = System.IO.Path.Join(System.AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\..\\data\\sqlite3");
+                var folder = System.IO.Path.Join(System.AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\data\sqlite3");
                 DbPath = System.IO.Path.Join(folder, "SlotsInCalendar.db");
             }
 
@@ -100,23 +100,17 @@ namespace Studying.Leetcode.Orm
             }
             public bool HasIntersectionWith(TimeSlot slot)
             {
-                // No intersection: 
-                // |-------|
-                //            |-----| 
-                if (this.End < slot.Begin || this.Begin > slot.End) return false; 
+                if (slot == null)
+                {
+                    return false;
+                }
 
-                // Partial overlap: 
-                // |-----------|
-                //      |---------| 
-                // Containment: 
-                // |-----------|
-                //    |-----|
-                // Full overlap: 
-                // |-----------|
-                // |-----------|
-                if ((this.Begin <= slot.Begin && this.End >= slot.Begin) || (this.Begin >= slot.Begin && slot.End >= this.Begin)) return true; 
+                if (this.End < slot.Begin || this.Begin > slot.End)
+                {
+                    return false;
+                }
 
-                return false; 
+                return true;
             }
             public override string ToString()
             {

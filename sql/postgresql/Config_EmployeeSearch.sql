@@ -99,7 +99,14 @@ CREATE TABLE EmployeeSearch_Feedbacks (
 INSERT INTO EmployeeSearch_Companies (ID, name, address, phone, email) VALUES
 (1, 'Google', '1600 Amphitheatre Parkway, Mountain View, CA 94043', '+1 650-253-0000', 'contact@google.com'),
 (2, 'Microsoft', 'One Microsoft Way, Redmond, WA 98052', '+1 425-882-8080', 'contact@microsoft.com'),
-(3, 'Apple', '1 Apple Park Way, Cupertino, CA 95014', '+1 408-996-1010', 'contact@apple.com');
+(3, 'Apple', '1 Apple Park Way, Cupertino, CA 95014', '+1 408-996-1010', 'contact@apple.com'),
+(4, 'Sony', 'Kōnan, Minato, Tokyo, Japan', '1-800-634-8606', 'playstationcares@sony.com'),
+(5, 'Hitachi', 'Marunouchi, Chiyoda-ku, Tokyo, Japan', '+49 (0)211 5283-201', 'Maik.Naphausen@hitachi-eu.com'),
+(6, 'Huawei', 'Shenzhen, China', '+852-800-931-122', 'corporate.comms@huawei.com'),
+(7, 'Panasonic', '	Kadoma, Osaka, Japan', '+1-905-624-5010', 'pids@ca.panasonic.com'),
+(8, 'Lenovo', 'Morrisville, North Carolina, United States', '1-855-253-6686', 'Lencare@lenovo.com'),
+(9, 'Alphabet Inc.', 'Googleplex, Mountain View, California, U.S.', '0370 0120 396', 'admin.support@alphabet.co.uk'),
+(10, 'Dell Technologies', 'Round Rock, Texas, U.S.', '+1 512 728 7800', 'investor_relations@dell.com');
 
 INSERT INTO EmployeeSearch_Departments (ID, name, company_id) VALUES
 (1, 'Engineering', 1),
