@@ -1,0 +1,173 @@
+# Task
+
+Задачи для использования Task в C#:
+- Загрузка и обработка большого файла в фоновом режиме.
+
+Для загрузки и обработки большого файла в фоновом режиме можно использовать класс Task из пространства имен System.Threading.Tasks. В методе Task.Run() можно запустить асинхронную операцию чтения файла и его обработки. Например:
+
+```C#
+Task.Run(async () =>
+{
+    using (var stream = new FileStream("largefile.txt", FileMode.Open))
+    {
+        var buffer = new byte[4096];
+        while (await stream.ReadAsync(buffer, 0, buffer.Length) > 0)
+        {
+            // Обработка данных
+        }
+    }
+});
+```
+
+- Отправка асинхронного запроса к API и обработка полученных данных.
+
+Для отправки асинхронного запроса к API и обработки полученных данных можно использовать класс HttpClient из пространства имен System.Net.Http. Методы SendAsync() или GetAsync() могут быть вызваны внутри метода Task.Run(). Например:
+```C#
+Task.Run(async () =>
+{
+    using (var client = new HttpClient())
+    {
+        var response = await client.GetAsync("https://api.example.com/data");
+        var content = await response.Content.ReadAsStringAsync();
+        // Обработка данных
+    }
+});
+```
+
+- Асинхронная обработка изображений (например, изменение размера или применение фильтров).
+
+Для асинхронной обработки изображений можно использовать классы из пространства имен System.Drawing или библиотеки ImageSharp. Методы обработки изображений могут быть вызваны внутри метода Task.Run(). Например:
+```C#
+Task.Run(async () =>
+{
+    using (var image = Image.FromFile("image.jpg"))
+    {
+        // Изменение размера
+        var resizedImage = new Bitmap(200, 200);
+        using (var graphics = Graphics.FromImage(resizedImage))
+        {
+            graphics.DrawImage(image, 0, 0, 200, 200);
+        }
+        // Обработка данных
+    }
+});
+```
+
+- Параллельное выполнение нескольких запросов к базе данных.
+
+Для параллельного выполнения нескольких запросов к базе данных можно использовать классы из пространства имен System.Data.SqlClient или других библиотек для работы с базами данных. Методы выполнения запросов могут быть вызваны внутри метода Task.Run(). Например:
+```C#
+Task.Run(async () =>
+{
+    using (var connection = new SqlConnection(connectionString))
+    {
+        await connection.OpenAsync();
+        var command1 = new SqlCommand("SELECT * FROM table1", connection);
+        var command2 = new SqlCommand("SELECT * FROM table2", connection);
+        var reader1 = await command1.ExecuteReaderAsync();
+        var reader2 = await command2.ExecuteReaderAsync();
+        // Обработка данных
+    }
+});
+```
+
+- Асинхронная отправка email уведомлений.
+
+Для асинхронной отправки email уведомлений можно использовать классы из пространства имен System.Net.Mail. Методы отправки email могут быть вызваны внутри метода Task.Run(). Например:
+```C#
+Task.Run(async () =>
+{
+    using (var message = new MailMessage("from@example.com", "to@example.com", "Subject", "Body"))
+    {
+        using (var client = new SmtpClient("smtp.example.com"))
+        {
+            client.Credentials = new NetworkCredential("username", "password");
+            client.EnableSsl = true;
+            await client.SendMailAsync(message);
+        }
+    }
+});
+```
+
+- Асинхронный подсчет статистики по большому набору данных.
+
+Для асинхронного подсчета статистики по большому набору данных можно использовать классы из пространства имен System.Threading.Tasks. Методы подсчета статистики могут быть вызваны внутри метода Task.Run(). Например:
+```C#
+Task.Run(async () =>
+{
+    var data = await LoadDataAsync();
+    var statistics = CalculateStatistics(data);
+    // Обработка данных
+});
+```
+
+- Параллельное выполнение нескольких задач на удаленных серверах.
+
+Для параллельного выполнения нескольких задач на удаленных серверах можно использовать классы из пространства имен System.Threading.Tasks и соответствующие сетевые протоколы, например, TCP или UDP. Методы выполнения задач могут быть вызваны внутри метода Task.Run(). Например:
+```C#
+Task.Run(async () =>
+{
+    using (var client1 = new TcpClient())
+    using (var client2
+- = new TcpClient())
+    {
+        await Task.WhenAll(
+            client1.ConnectAsync("server1.example.com", 1234),
+            client2.ConnectAsync("server2.example.com", 1234)
+        );
+        // Обработка данных
+    }
+});
+```
+
+- Асинхронная обработка и отправка большого количества файлов.
+
+Для асинхронной обработки и отправки большого количества файлов можно использовать классы из пространства имен System.IO и System.Net.Mail. Методы обработки и отправки файлов могут быть вызваны внутри метода Task.Run(). Например:
+```C#
+Task.Run(async () =>
+{
+    var files = Directory.GetFiles("path/to/files");
+    foreach (var file in files)
+    {
+        using (var stream = new FileStream(file, FileMode.Open))
+        {
+            // Обработка данных
+            var attachment = new Attachment(stream, Path.GetFileName(file));
+            using (var message = new MailMessage("from@example.com", "to@example.com", "Subject", "Body"))
+            {
+                message.Attachments.Add(attachment);
+                using (var client = new SmtpClient("smtp.example.com"))
+                {
+                    client.Credentials = new NetworkCredential("username", "password");
+                    client.EnableSsl = true;
+                    await client.SendMailAsync(message);
+                }
+            }
+        }
+    }
+});
+```
+
+- Параллельное выполнение нескольких задач на многопроцессорной машине.
+
+Для параллельного выполнения нескольких задач на многопроцессорной машине можно использовать классы из пространства имен System.Threading.Tasks и распределение задач между ядрами процессора. Для этого можно использовать класс Parallel из того же пространства имен. Например:
+```C#
+Task.Run(() =>
+{
+    var data = LoadData();
+    Parallel.ForEach(data, item =>
+    {
+        // Обработка данных
+    });
+});
+```
+
+- Асинхронный запуск и контроль выполнения других задач.
+
+Для асинхронного запуска и контроля выполнения других задач можно использовать классы из пространства имен System.Threading.Tasks и методы WaitAll() или WhenAll(). Например:
+```C#
+var task1 = Task.Run(() => DoTask1());
+var task2 = Task.Run(() => DoTask2());
+await Task.WhenAll(task1, task2);
+// Обработка данных
+```
