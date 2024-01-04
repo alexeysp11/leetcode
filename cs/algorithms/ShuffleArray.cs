@@ -45,14 +45,17 @@ namespace Studying.Leetcode.Algorithms
             // 2. nums.length == 2n
             // 3. 1 <= nums[i] <= 10^3
             
-            if (n < 1 || n > 500) throw new System.Exception("Violated constraint: 1 <= n <= 500"); 
-            if (input.Length != 2*n) throw new System.Exception("Violated constraint: nums.length == 2n"); 
+            if (n < 1 || n > 500) 
+                throw new System.Exception("Violated constraint: 1 <= n <= 500"); 
+            if (input.Length != 2*n) 
+                throw new System.Exception("Violated constraint: nums.length == 2n"); 
 
             int[] output = new int[input.Length]; 
             for (int i = 0; i < n; i++)
             {
                 int lower = 1, upper = 1000; 
-                if (input[i] < lower || input[i] > upper || input[i + n] < lower || input[i + n] > upper) throw new System.Exception("Violated constraint: 1 <= nums[i] <= 10^3"); 
+                if (input[i] < lower || input[i] > upper || input[i + n] < lower || input[i + n] > upper) 
+                    throw new System.Exception("Violated constraint: 1 <= nums[i] <= 10^3"); 
                 
                 output[2*i] = input[i]; 
                 output[2*i + 1] = input[i + n]; 

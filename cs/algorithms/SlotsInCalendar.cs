@@ -21,9 +21,12 @@ namespace Studying.Leetcode.Algorithms
             #region Constructors
             public TimeOnly(int hour, int minute, int second=0)
             {
-                if (hour < 0 || hour > 24) throw new System.Exception("Error while initialing TimeOnly: hour should be in the range between 0 and 24"); 
-                if (minute < 0 || minute > 60) throw new System.Exception("Error while initialing TimeOnly: minute should be in the range between 0 and 60"); 
-                if (second < 0 || second > 60) throw new System.Exception("Error while initialing TimeOnly: second should be in the range between 0 and 60"); 
+                if (hour < 0 || hour > 24) 
+                    throw new System.Exception("Error while initialing TimeOnly: hour should be in the range between 0 and 24"); 
+                if (minute < 0 || minute > 60) 
+                    throw new System.Exception("Error while initialing TimeOnly: minute should be in the range between 0 and 60"); 
+                if (second < 0 || second > 60) 
+                    throw new System.Exception("Error while initialing TimeOnly: second should be in the range between 0 and 60"); 
 
                 Hour = hour; 
                 Minute = minute; 
@@ -93,7 +96,8 @@ namespace Studying.Leetcode.Algorithms
                 // Constraint: 
                 // 1. The beginning of a time slot should not be bigger than its end. 
 
-                if (begin > end) throw new System.Exception("Incorrect borders of a time slot: begin should not be bigger than end"); 
+                if (begin > end) 
+                    throw new System.Exception("Incorrect borders of a time slot: begin should not be bigger than end"); 
 
                 Begin = begin; 
                 End = end; 
@@ -151,12 +155,14 @@ namespace Studying.Leetcode.Algorithms
                     TimeOnly prevEnd = activities[0].End; 
                     foreach (TimeSlot activity in activities) 
                     {
-                        if (prevBegin > activity.Begin || prevEnd > activity.End) throw new System.Exception("Violated constraint: incorrect order in a list of activities"); 
+                        if (prevBegin > activity.Begin || prevEnd > activity.End) 
+                            throw new System.Exception("Violated constraint: incorrect order in a list of activities"); 
                         
                         prevBegin = activity.Begin; 
                         prevEnd = activity.End; 
                     }
-                    if (activities[0].Begin < dailyBound.Begin && activities[activities.Count - 1].End > dailyBound.End) throw new System.Exception("Violated constraint: activities are out of daily bound"); 
+                    if (activities[0].Begin < dailyBound.Begin && activities[activities.Count - 1].End > dailyBound.End) 
+                        throw new System.Exception("Violated constraint: activities are out of daily bound"); 
                 }
 
                 Activities = activities; 

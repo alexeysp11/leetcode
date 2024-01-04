@@ -44,12 +44,15 @@ namespace Studying.Leetcode.Algorithms
             int maxNum = -1; 
             try
             {
-                if (string.IsNullOrEmpty(input) || input.Length < 1 || input.Length > 105) throw new System.Exception("Violated constraint: 1 <= n.length <= 105"); 
-                if (input[0] == '0') throw new System.Exception("Violated constraint: input should not contain any leading zeros"); 
+                if (string.IsNullOrEmpty(input) || input.Length < 1 || input.Length > 105) 
+                    throw new System.Exception("Violated constraint: 1 <= n.length <= 105"); 
+                if (input[0] == '0') 
+                    throw new System.Exception("Violated constraint: input should not contain any leading zeros"); 
 
                 foreach (char c in input)
                 {
-                    if (!char.IsDigit(c)) throw new System.Exception("Violated constraint: value should consists of only digits"); 
+                    if (!char.IsDigit(c)) 
+                        throw new System.Exception("Violated constraint: value should consists of only digits"); 
                     
                     int tmp = int.Parse(c.ToString());
                     if (tmp > maxNum) maxNum = tmp;

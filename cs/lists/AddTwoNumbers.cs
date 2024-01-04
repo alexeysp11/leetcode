@@ -16,12 +16,16 @@ namespace Studying.Leetcode.Lists
 
             public Node(int val)
             {
-                if (val < 0 || val > 9) throw new System.Exception(ExceptionMsg); 
+                if (val < 0 || val > 9) 
+                    
+                        throw new System.Exception(ExceptionMsg); 
                 Val = val; 
             }
             public Node(int val, Node next)
             {
-                if (val < 0 || val > 9) throw new System.Exception(ExceptionMsg); 
+                if (val < 0 || val > 9) 
+                    
+                        throw new System.Exception(ExceptionMsg); 
                 Val = val; 
                 Next = next; 
             }
@@ -104,7 +108,7 @@ namespace Studying.Leetcode.Lists
                 }
                 catch (System.Exception ex) 
                 {
-                    throw ex; 
+                    throw; 
                 }
                 return result; 
             }
@@ -163,7 +167,7 @@ namespace Studying.Leetcode.Lists
                 }
                 catch (System.Exception ex) 
                 {
-                    throw ex; 
+                    throw; 
                 }
                 return result; 
             }
@@ -213,10 +217,14 @@ namespace Studying.Leetcode.Lists
             var intList1 = l1.GetIntList(); 
             var intList2 = l2.GetIntList(); 
 
-            if (intList1.Count < 1 || intList1.Count > 100 || intList2.Count < 1 || intList2.Count > 100) throw new System.Exception("Violated constraint: The number of nodes in each linked list is in the range [1, 100]"); 
-            foreach (int i in intList1) if (i < 0 || i > 9) throw new System.Exception("Violated constraint: 0 <= Node.val <= 9"); 
-            foreach (int i in intList2) if (i < 0 || i > 9) throw new System.Exception("Violated constraint: 0 <= Node.val <= 9"); 
-            if ((intList1.Count != 1 && intList1[intList1.Count - 1] == 0) || (intList2.Count != 1 && intList2[intList2.Count - 1] == 0)) throw new System.Exception("Violated constraint: It is guaranteed that the list represents a number that does not have leading zeros"); 
+            if (intList1.Count < 1 || intList1.Count > 100 || intList2.Count < 1 || intList2.Count > 100) 
+                throw new System.Exception("Violated constraint: The number of nodes in each linked list is in the range [1, 100]"); 
+            foreach (int i in intList1) if (i < 0 || i > 9) 
+                throw new System.Exception("Violated constraint: 0 <= Node.val <= 9"); 
+            foreach (int i in intList2) if (i < 0 || i > 9) 
+                throw new System.Exception("Violated constraint: 0 <= Node.val <= 9"); 
+            if ((intList1.Count != 1 && intList1[intList1.Count - 1] == 0) || (intList2.Count != 1 && intList2[intList2.Count - 1] == 0)) 
+                throw new System.Exception("Violated constraint: It is guaranteed that the list represents a number that does not have leading zeros"); 
             
             return l1.AddLinkedList(l2); 
         }

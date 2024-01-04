@@ -68,8 +68,10 @@ namespace Studying.Leetcode.Graphs
 
             private void CheckIndex(int row, int col)
             {
-                if (row >= Rows) throw new System.Exception("Incorrect number of rows"); 
-                if (col >= Cols) throw new System.Exception("Incorrect number of columns"); 
+                if (row >= Rows) 
+                    throw new System.Exception("Incorrect number of rows"); 
+                if (col >= Cols) 
+                    throw new System.Exception("Incorrect number of columns"); 
             }
         }
 

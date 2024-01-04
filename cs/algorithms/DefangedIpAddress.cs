@@ -31,14 +31,16 @@ namespace Studying.Leetcode.Algorithms
             // Constraints:
             // The given address is a valid IPv4 address.
             System.Net.IPAddress address;
-            if (!System.Net.IPAddress.TryParse(input, out address)) throw new System.Exception("Violated constraint: The given address is a valid IPv4 address"); 
+            if (!System.Net.IPAddress.TryParse(input, out address)) 
+                throw new System.Exception("Violated constraint: The given address is a valid IPv4 address"); 
 
             // Option 1: 
             // return input.Replace(".", "[.]"); 
 
             // Option 2: 
             string tmp = string.Empty; 
-            for (int i = 0; i < input.Length; i++) tmp += input[i] == '.' ? "[.]" : input[i].ToString(); 
+            for (int i = 0; i < input.Length; i++) 
+                tmp += input[i] == '.' ? "[.]" : input[i].ToString(); 
             return tmp; 
         }
     }

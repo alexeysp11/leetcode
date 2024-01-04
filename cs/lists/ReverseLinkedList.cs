@@ -29,7 +29,8 @@ namespace Studying.Leetcode.Lists
 
             public void SetNext(Node next)
             {
-                if (next == null) throw new System.Exception("Next node could not be null"); 
+                if (next == null) 
+                    throw new System.Exception("Next node could not be null"); 
 
                 Next = next; 
             }
@@ -94,7 +95,8 @@ namespace Studying.Leetcode.Lists
             {
                 if (Head == null) return new int[0]; 
                 List<int> list = ToIntList();
-                if (list.Count != Length) throw new System.Exception("Incorrect length of a linked list (might be caused by losing reference on some of the nodes)"); 
+                if (list.Count != Length) 
+                    throw new System.Exception("Incorrect length of a linked list (might be caused by losing reference on some of the nodes)"); 
                 int[] array = new int[Length]; 
                 for (int i = 0; i < Length; i++) array[i] = list[i]; 
                 return array; 

@@ -53,10 +53,12 @@ namespace Studying.Leetcode.Algorithms
             // Constraints:
             // 0 <= celsius <= 1000
             
-            if (celsius < 0 || celsius > 1000) throw new System.Exception("Violated constraint: 0 <= celsius <= 1000"); 
+            if (celsius < 0 || celsius > 1000) 
+                throw new System.Exception("Violated constraint: 0 <= celsius <= 1000"); 
 
             Temperature temperature = new Temperature(celsius); 
-            if (System.Math.Abs(temperature.Celsius - celsius) > .001f) throw new System.Exception("Temperature has been initialized incorrectly: celsius is different"); 
+            if (System.Math.Abs(temperature.Celsius - celsius) > .001f) 
+                throw new System.Exception("Temperature has been initialized incorrectly: celsius is different"); 
             return temperature; 
         } 
     }

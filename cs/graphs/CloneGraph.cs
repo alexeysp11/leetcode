@@ -84,12 +84,16 @@ namespace Studying.Leetcode.Graphs
             List<Node> output = new List<Node>(); 
             try
             {
-                if (input.Count > 99) throw new System.Exception("The number of nodes in the graph should be in the range [0, 99]"); 
+                if (input.Count > 99) 
+                    throw new System.Exception("The number of nodes in the graph should be in the range [0, 99]"); 
                 for (int i = 0; i < input.Count; i++)
                 {
-                    if (input[i].val < 1 || input[i].val > 100) throw new System.Exception("Violated constraint: 1 <= Node.val <= 100"); 
-                    for (int j = i + 1; j < input.Count; j++) if (input[i].val == input[j].val) throw new System.Exception("Violated constraint: no repeated edges");
-                    foreach (var neighbor in input[i].neighbors) if (input[i].val == neighbor.val) throw new System.Exception("Violated constraint: no self-loops in the graph"); 
+                    if (input[i].val < 1 || input[i].val > 100) 
+                        throw new System.Exception("Violated constraint: 1 <= Node.val <= 100"); 
+                    for (int j = i + 1; j < input.Count; j++) if (input[i].val == input[j].val) 
+                        throw new System.Exception("Violated constraint: no repeated edges");
+                    foreach (var neighbor in input[i].neighbors) if (input[i].val == neighbor.val) 
+                        throw new System.Exception("Violated constraint: no self-loops in the graph"); 
 
                     output.Add(new Node(input[i].val, input[i].neighbors)); 
                 }

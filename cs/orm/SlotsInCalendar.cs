@@ -88,7 +88,8 @@ namespace Studying.Leetcode.Orm
                 // Constraint: 
                 // 1. The beginning of a time slot should not be bigger than its end. 
 
-                if (begin > end) throw new System.Exception("Incorrect borders of a time slot: begin should not be bigger than end"); 
+                if (begin > end) 
+                    throw new System.Exception("Incorrect borders of a time slot: begin should not be bigger than end"); 
 
                 Begin = begin; 
                 End = end; 

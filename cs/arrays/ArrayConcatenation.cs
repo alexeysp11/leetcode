@@ -40,12 +40,14 @@ namespace Studying.Leetcode.Arrays
             int[] result = new int[0]; 
             try
             {
-                if (nums.Length < 1 || nums.Length > 1000) throw new System.Exception("Violated constraint: 1 <= n <= 1000"); 
+                if (nums.Length < 1 || nums.Length > 1000) 
+                    throw new System.Exception("Violated constraint: 1 <= n <= 1000"); 
 
                 result = new int[nums.Length * 2]; 
                 for (int i = 0; i < nums.Length; i++)
                 {
-                    if (nums[i] < 1 || nums[i] > 1000) throw new System.Exception("Violated constraint: 1 <= nums[i] <= 1000"); 
+                    if (nums[i] < 1 || nums[i] > 1000) 
+                        throw new System.Exception("Violated constraint: 1 <= nums[i] <= 1000"); 
                     
                     result[i] = nums[i]; 
                     result[nums.Length + i] = nums[i]; 

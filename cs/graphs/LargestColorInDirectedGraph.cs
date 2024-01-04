@@ -56,9 +56,12 @@ namespace Studying.Leetcode.Graphs
 
             try
             {
-                if (colors.Length < 1 || colors.Length > 105) throw new System.Exception("Violated constraint: 1 <= colors.length <= 105"); 
-                if (edges.Length > 105) throw new System.Exception("Violated constraint: 0 <= edges.length <= 105"); 
-                foreach (char c in colors) if (!char.IsLetter(c) && !char.IsLower(c)) throw new System.Exception("Violated constraint: colors consists of lowercase English letters"); 
+                if (colors.Length < 1 || colors.Length > 105) 
+                    throw new System.Exception("Violated constraint: 1 <= colors.length <= 105"); 
+                if (edges.Length > 105) 
+                    throw new System.Exception("Violated constraint: 0 <= edges.length <= 105"); 
+                foreach (char c in colors) if (!char.IsLetter(c) && !char.IsLower(c)) 
+                    throw new System.Exception("Violated constraint: colors consists of lowercase English letters"); 
 
                 // Get paths from edges 
                 List<int[]> paths = GetPaths(edges);

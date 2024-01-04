@@ -1,6 +1,6 @@
 using System.Collections.Generic; 
 
-namespace Studying.Leetcode.Tree
+namespace Studying.Leetcode.Trees
 {
     /// <summary>
     /// Given two trees of integers, where A is an origin tree, and B is a modified tree. 
@@ -22,15 +22,18 @@ namespace Studying.Leetcode.Tree
             }
             public Node(int value, List<Node> elements)
             {
-                if (elements == null) throw new System.Exception("List of tree elements could not be null");
+                if (elements == null) 
+                    throw new System.Exception("List of tree elements could not be null");
                 Value = value; 
-                foreach (Node element in elements) AddElement(element); 
+                foreach (Node element in elements) 
+                    AddElement(element); 
                 // Parent = GetParentOf(this); 
             }
 
             public void AddElement(Node element)
             {
-                if (element == null) throw new System.Exception("Element of a tree could not be null"); 
+                if (element == null) 
+                    throw new System.Exception("Element of a tree could not be null"); 
                 Childs.Add(element); 
             }
 
@@ -55,7 +58,8 @@ namespace Studying.Leetcode.Tree
             public string ToChildsString()
             {
                 string result = "["; 
-                foreach (Node element in Childs) result += element.Value + ","; 
+                foreach (Node element in Childs) 
+                    result += element.Value + ","; 
                 result += "]"; 
                 return result.Replace(",]", "]"); 
             }
@@ -81,7 +85,8 @@ namespace Studying.Leetcode.Tree
 
             public Tree(Node root)
             {
-                if (root == null) throw new System.Exception("Root element of a tree could not be null"); 
+                if (root == null) 
+                    throw new System.Exception("Root element of a tree could not be null"); 
                 Root = root; 
             }
             
@@ -128,7 +133,8 @@ namespace Studying.Leetcode.Tree
 
         private Tree Solve(Tree tree1, Tree tree2)
         {
-            if (tree1 == null || tree2 == null) throw new System.Exception("Input trees could not be null"); 
+            if (tree1 == null || tree2 == null) 
+                throw new System.Exception("Input trees could not be null"); 
             return tree2; 
         }
     }
