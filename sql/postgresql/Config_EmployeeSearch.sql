@@ -94,6 +94,16 @@ CREATE TABLE EmployeeSearch_Feedbacks (
     FOREIGN KEY (contract_id) REFERENCES EmployeeSearch_Contracts(ID)
 );
 
+CREATE TABLE EmployeeSearch_DbgLogs
+(
+    Id SERIAL PRIMARY KEY,
+	TransactionName VARCHAR(150),
+	TransactionDetails TEXT,
+	TransactionStatus VARCHAR(50),
+    CreateDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ChangeDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -------
 
 INSERT INTO EmployeeSearch_Companies (ID, name, address, phone, email) VALUES

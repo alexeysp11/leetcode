@@ -61,6 +61,15 @@ CREATE TABLE PaymentHistory (
     PaymentStatus VARCHAR(50),
     PaymentDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE FinancialTransactions_DbgLogs
+(
+    Id SERIAL PRIMARY KEY,
+	TransactionName VARCHAR(150),
+	TransactionDetails TEXT,
+	TransactionStatus VARCHAR(50),
+    CreateDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ChangeDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 -- Generate SQL commands for filling tables (INSERT command): 
 -- you need to fill tables associated with users and products: Users, Addresses, ProductCategories, Products.
