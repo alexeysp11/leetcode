@@ -13,8 +13,8 @@ namespace Studying.Leetcode.Trees
         public class TreeElement<T>
         {
             public T Value { get; private set; }
-            public TreeElement Parent { get; set; }
-            public ICollection<TreeElement> Childs { get; private set; }
+            public TreeElement<T> Parent { get; set; }
+            public ICollection<TreeElement<T>> Childs { get; private set; }
 
             public TreeElement(T value) : this(value, null)
             {
@@ -29,7 +29,7 @@ namespace Studying.Leetcode.Trees
                 Childs = childs == null ? new List<TreeElement<T>>() : childs;
             }
 
-            public AddChild(TreeElement<T> child)
+            public void AddChild(TreeElement<T> child)
             {
                 if (child == null)
                     throw new System.Exception("Cannot add the child element: child element could not be null");

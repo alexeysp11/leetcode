@@ -2,7 +2,7 @@ using System;
 using System.Threading; 
 using System.Threading.Tasks; 
 
-namespace Studying.Leetcode.Threads
+namespace Studying.Leetcode.Tasks
 {
     /// <summary>
     /// 
