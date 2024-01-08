@@ -8,14 +8,14 @@ RETURNS VOID
 AS $$
 DECLARE 
 	lProductsTableName TEXT;
-    lTransactionName TEXT;
+	lTransactionName TEXT;
 	lInputParametersString TEXT;
-    lInsertProductStatus TEXT;
+	lInsertProductStatus TEXT;
 	lErrCode TEXT;
 	lMsgText TEXT;
 	lExcContext TEXT;
 BEGIN
-    lTransactionName = 'f_AddProduct_UseDbgLog';
+	lTransactionName = 'f_AddProduct_UseDbgLog';
 	lProductsTableName = 'Products';
 	lInputParametersString = 'Parameters: aCategoryId: ' || aCategoryId 
 		|| ', aProductName: ' || aProductName
