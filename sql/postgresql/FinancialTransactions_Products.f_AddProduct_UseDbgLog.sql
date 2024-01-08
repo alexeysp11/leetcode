@@ -34,8 +34,7 @@ BEGIN
 				lProductsTableName, lInputParametersString;
 		END IF;
 
-        lInsertProductStatus = 'Record inserted. Table: ' || lProductsTableName 
-			|| '. ' || lInputParametersString;
+        lInsertProductStatus = 'Record inserted. Table: ' || lProductsTableName || '. ' || lInputParametersString;
 	EXCEPTION WHEN OTHERS 
 	THEN
 		GET STACKED DIAGNOSTICS
