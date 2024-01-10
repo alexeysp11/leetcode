@@ -1,5 +1,6 @@
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Studying.Leetcode.Tasks
 {
@@ -39,12 +40,74 @@ namespace Studying.Leetcode.Tasks
                     AddText(fs, dummyString);
                 }
             }
+
+            // Download and process a large file in the background.
+            ReadFileSyncFileStream(path);
+            // ReadFileSyncStreamReader(path);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void AddText(FileStream fs, string value)
         {
             byte[] info = new UTF8Encoding(true).GetBytes(value);
             fs.Write(info, 0, info.Length);
         }
+
+        #region Methods for reading a file
+        /// <summary>
+        /// 
+        /// </summary>
+        private void ReadFileSyncFileStream(string path)
+        {
+            var totalReadLength = 0;
+            var startDateTime = System.DateTime.Now;
+            System.Console.WriteLine("START");
+            using (FileStream fs = File.OpenRead(path))
+            {
+                int readLength = 0;
+                byte[] buffer = new byte[1024];
+                UTF8Encoding temp = new UTF8Encoding(true);
+                while ((readLength = fs.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    System.Console.WriteLine(temp.GetString(buffer, 0, readLength));
+                    totalReadLength += readLength;
+                }
+            }
+            var endDateTime = System.DateTime.Now;
+            System.Console.WriteLine("FINISH");
+            System.Console.WriteLine("totalReadLength: " + totalReadLength);
+            System.Console.WriteLine("Read start: " + startDateTime.ToString());
+            System.Console.WriteLine("Read finished: " + endDateTime.ToString());
+            System.Console.WriteLine("Time elapsed: " + (endDateTime - startDateTime).ToString());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void ReadFileSyncStreamReader(string path)
+        {
+            var strNumber = 0;
+            var startDateTime = System.DateTime.Now;
+            System.Console.WriteLine("START");
+            using (StreamReader sr = new StreamReader(path))
+            {
+                string line;
+                do
+                {
+                    line = sr.ReadLine();
+                    strNumber += 1;
+                    System.Console.WriteLine("strNumber: " + strNumber);
+                } while (line != null);
+            }
+            var endDateTime = System.DateTime.Now;
+            System.Console.WriteLine("FINISH");
+            System.Console.WriteLine("Total strNumber: " + strNumber);
+            System.Console.WriteLine("Read start: " + startDateTime.ToString());
+            System.Console.WriteLine("Read finished: " + endDateTime.ToString());
+            System.Console.WriteLine("Time elapsed: " + (endDateTime - startDateTime).ToString());
+        }
+        #endregion  // Methods for reading a file
     }
 }
