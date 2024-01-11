@@ -16,7 +16,7 @@ DECLARE
 	lExcContext TEXT;
 BEGIN
 	lTransactionName = 'f_AddProduct_UseDbgLog';
-	lProductsTableName = 'Products';
+	lProductsTableName = 'FinancialTransactions_Products';
 	lInputParametersString = 'Parameters: aCategoryId: ' || aCategoryId 
 		|| ', aProductName: ' || aProductName
 		|| ', aPrice: ' || aPrice;
@@ -25,9 +25,9 @@ BEGIN
     VALUES (lTransactionName, 'Begin', 'Started');
 
 	BEGIN
-		IF (SELECT COUNT(*) FROM Products WHERE categoryid = aCategoryId AND productname = aProductName AND price = aPrice) = 0
+		IF (SELECT COUNT(*) FROM FinancialTransactions_Products WHERE categoryid = aCategoryId AND productname = aProductName AND price = aPrice) = 0
 		THEN
-			INSERT INTO Products (categoryid, productname, price)
+			INSERT INTO FinancialTransactions_Products (categoryid, productname, price)
 			VALUES (aCategoryId, aProductName, aPrice);
 		ELSE
 			RAISE EXCEPTION 'The record with the specified parameters already exists in table %. %', 

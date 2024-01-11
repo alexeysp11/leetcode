@@ -14,7 +14,7 @@ DECLARE
 	lExcContext TEXT;
 BEGIN
 	BEGIN
-		INSERT INTO Users (FirstName, LastName, Email, Password) VALUES (aFirstName, aLastName, aEmail, aPassword);
+		INSERT INTO FinancialTransactions_Users (FirstName, LastName, Email, Password) VALUES (aFirstName, aLastName, aEmail, aPassword);
 		COMMIT;
 	EXCEPTION WHEN OTHERS 
 	THEN
