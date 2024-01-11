@@ -1,7 +1,7 @@
--- Description: https://leetcode.com/problems/recyclable-and-low-fat-products/
+-- Description: https://leetcode.com/problems/recyclable-and-low-fat-RecycableLowFatProducts_Products/
 
 -- Input: 
--- Products table:
+-- RecycableLowFatProducts_Products table:
 -- +-------------+----------+------------+
 -- | product_id  | low_fats | recyclable |
 -- +-------------+----------+------------+
@@ -18,6 +18,6 @@
 -- | 1           |
 -- | 3           |
 -- +-------------+
--- Explanation: Only products 1 and 3 are both low fat and recyclable.
+-- Explanation: Only RecycableLowFatProducts_Products 1 and 3 are both low fat and recyclable.
 
-SELECT p.product_id FROM products p WHERE p.low_fats = 1 AND p.recyclable = 1; 
+SELECT p.product_id FROM RecycableLowFatProducts_Products p WHERE p.low_fats = 1 AND p.recyclable = 1; 
