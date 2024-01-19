@@ -7,6 +7,9 @@ namespace Studying.Leetcode.Threads
     /// </summary>
     public class CreatingThread : Studying.Leetcode.ILeetcodeProblem
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public class NumberHelper
         {
             public int MaxNumber { get; private set; }
