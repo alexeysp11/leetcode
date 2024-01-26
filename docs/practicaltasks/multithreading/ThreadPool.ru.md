@@ -15,4 +15,6 @@
 В документации сказано, что API метод для выставления максимального или минимального количества потоков для пула потоков находится в библиотеке `Kernel32.dll`.
 Подробнее об этом можно почитать по ссылкам [Runtime configuration options for threading](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/threading) и [Thread pool API](https://learn.microsoft.com/en-us/windows/win32/procthread/thread-pool-api).
 
+## Задачи 
+
 Для лучшего понимания работы пула потоков в C# можно выполнить практические задачи, например, создать несколько задач, которые будут выполняться параллельно в пуле потоков, и измерить время выполнения.
