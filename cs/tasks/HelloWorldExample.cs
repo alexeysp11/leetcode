@@ -9,7 +9,7 @@ namespace Studying.Leetcode.Tasks
     /// </summary>
     public class HelloWorldExample : Studying.Leetcode.ILeetcodeProblem
     {
-        private string result;
+        private static string result;
 
         /// <summary>
         /// 
@@ -25,10 +25,10 @@ namespace Studying.Leetcode.Tasks
             Console.WriteLine(result);
         }
 
-        public async Task<string> SaySomething() 
+        public static async Task<string> SaySomething() 
         {
-            await Task.Delay(5);
-            // Thread.Sleep(5);
+            // await Task.Delay(5);
+            Thread.Sleep(5);
             result = "Hello world!";
             return "Something";
         }
