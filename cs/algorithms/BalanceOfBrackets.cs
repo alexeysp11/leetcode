@@ -21,16 +21,16 @@ namespace Studying.Leetcode.Algorithms
 
         private bool IsBalanced(string text)
         {
-            // Массив допустимых символов (все открывающие и закрывающие скобки).
+            // An array of allowed symbols (all opening and closing parentheses).
             var allowedSymbols = new Dictionary<char, char>();
             allowedSymbols.Add('{', '}');
             allowedSymbols.Add('(', ')');
             allowedSymbols.Add('[', ']');
 
-            // Для того, чтобы хранить информацию по открытым/закрытым скобкам, создадим словарь <char, int>.
+            // In order to store information on open/closed parentheses, let's create a dictionary <char, int>.
             var symbols = new Dictionary<char, int>();
 
-            // Заполним словарь допустимыми значениями.
+            // Fill the dictionary with allowed symbols.
             foreach (var key in allowedSymbols.Keys)
             {
                 symbols.Add(key, 0);
@@ -40,10 +40,10 @@ namespace Studying.Leetcode.Algorithms
                 symbols.Add(value, 0);
             }
 
-            // В цикле посимвольно пробегаем по тексту.
-            // Если символ равен одному из допустимых символов, то увеличиваем количество в словаре на 1.
-            // Если после увеличения количества для текущего символа получается так, что количество 
-            // закрывающих больше количества открывающих, то возвращаем false.
+            // In a loop, we go through the text character by character.
+            // If the character is equal to one of the valid characters, then increase the number in the dictionary by 1.
+            // If after increasing the quantity for the current symbol it turns out that the quantity
+            // closing more than the number of opening ones, then return false.
             foreach (var character in text)
             {
                 int value = 0;
@@ -63,10 +63,10 @@ namespace Studying.Leetcode.Algorithms
                 }
             }
 
-            // Пробежать по допустимым символам, взять ключи, по ключу найти закрывающий символ.
-            // В словаре сиволов со значениями, получить количество закрывающих и открывающих символов.
-            // Если количество символов не равно, то возвращаем false, т.к. строка не сбалансирована.
-            // Если цикл закончился, то возвращаем true.
+            // Run through valid characters, take keys, and use the key to find the closing character.
+            // In the dictionary of symbols with values, get the number of closing and opening symbols.
+            // If the number of characters is not equal, then return false, because the line is not balanced.
+            // If the loop has ended, then return true.
             foreach (var openSymbol in allowedSymbols.Keys)
             {
                 var closeSymbol = allowedSymbols[openSymbol];
