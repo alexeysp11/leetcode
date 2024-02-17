@@ -132,7 +132,14 @@ VALUES
 -- Generate SQL commands to fill tables (INSERT command): 
 -- you need to fill the tables associated with orders: FinancialTransactions_Orders, FinancialTransactions_OrderDetails, FinancialTransactions_OrderStatuses.
 -- The FinancialTransactions_Orders and FinancialTransactions_OrderDetails tables should have 10 records, and the FinancialTransactions_OrderStatuses table should have 5 records.
-INSERT INTO FinancialTransactions_Orders (UserId, OrderId)
+INSERT INTO FinancialTransactions_OrderStatuses (OrderStatusName)
+VALUES
+('Pending'),
+('Processing'),
+('Shipped'),
+('Delivered'),
+('Canceled');
+INSERT INTO FinancialTransactions_Orders (UserId, StatusId)
 VALUES
 (1, 1),
 (2, 2),
