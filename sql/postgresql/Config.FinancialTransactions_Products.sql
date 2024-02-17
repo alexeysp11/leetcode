@@ -28,10 +28,15 @@ CREATE TABLE FinancialTransactions_Products (
     ProductName VARCHAR(50),
     Price DECIMAL(10,2)
 );
+CREATE TABLE FinancialTransactions_OrderStatuses (
+    OrderStatusId SERIAL PRIMARY KEY,
+    OrderStatusName VARCHAR(50)
+);
 CREATE TABLE FinancialTransactions_Orders (
     OrderId SERIAL PRIMARY KEY,
     UserId INT REFERENCES FinancialTransactions_Users(UserId),
-    OrderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    OrderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    StatusId INT REFERENCES FinancialTransactions_OrderStatuses(OrderStatusId)
 );
 CREATE TABLE FinancialTransactions_OrderDetails (
     OrderDetailId SERIAL PRIMARY KEY,
@@ -40,15 +45,12 @@ CREATE TABLE FinancialTransactions_OrderDetails (
     Quantity INT,
     Price DECIMAL(10,2)
 );
-CREATE TABLE FinancialTransactions_OrderStatuses (
-    OrderStatusId SERIAL PRIMARY KEY,
-    OrderStatusName VARCHAR(50)
-);
 CREATE TABLE FinancialTransactions_Payments (
     PaymentId SERIAL PRIMARY KEY,
     UserId INT REFERENCES FinancialTransactions_Users(UserId),
     PaymentDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PaymentAmount DECIMAL(10,2)
+    PaymentAmount DECIMAL(10,2),
+    OrderId INT REFERENCES FinancialTransactions_Orders(OrderId)
 );
 CREATE TABLE FinancialTransactions_PaymentMethods (
     PaymentMethodId SERIAL PRIMARY KEY,
@@ -130,47 +132,57 @@ VALUES
 -- Generate SQL commands to fill tables (INSERT command): 
 -- you need to fill the tables associated with orders: FinancialTransactions_Orders, FinancialTransactions_OrderDetails, FinancialTransactions_OrderStatuses.
 -- The FinancialTransactions_Orders and FinancialTransactions_OrderDetails tables should have 10 records, and the FinancialTransactions_OrderStatuses table should have 5 records.
-INSERT INTO FinancialTransactions_Orders (UserId)
+INSERT INTO FinancialTransactions_Orders (UserId, OrderId)
 VALUES
-(1),
-(2),
-(3),
-(4),
-(5),
-(6),
-(7),
-(8),
-(9),
-(10);
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 1),
+(7, 2),
+(8, 3),
+(9, 4),
+(10, 5),
+(4, 1);
 INSERT INTO FinancialTransactions_OrderDetails (OrderId, ProductId, Quantity, Price)
-VALUES
-(1, 1, 2, 1000.00),
-(1, 3, 1, 400.00),
-(2, 2, 1, 1000.00),
-(2, 4, 2, 400.00),
-(3, 5, 3, 100.00),
-(3, 7, 1, 150.00),
-(4, 6, 2, 50.00),
-(4, 8, 1, 80.00),
-(5, 9, 1, 60.00),
-(5, 10, 1, 100.00),
-(6, 11, 2, 80.00),
-(6, 13, 1, 150.00),
-(7, 12, 3, 30.00),
-(7, 14, 2, 50.00),
-(8, 15, 1, 25.00),
-(8, 1, 1, 70.00),
-(9, 12, 1, 100.00),
-(9, 15, 1, 100.00),
-(10, 7, 2, 30.00),
-(10, 10, 1, 70.00);
-INSERT INTO FinancialTransactions_OrderStatuses (OrderStatusName)
-VALUES
-('Pending'),
-('Processing'),
-('Shipped'),
-('Delivered'),
-('Canceled');
+SELECT 
+    FLOOR(RANDOM() * 11) + 1 AS OrderId,
+    FLOOR(RANDOM() * 10) + 1 AS ProductId, 
+    FLOOR(RANDOM() * 10) + 1 AS Quantity, 
+    ROUND((RANDOM() * 1000)::numeric, 2) AS Price 
+FROM FinancialTransactions_Orders
+JOIN FinancialTransactions_Products ON 1=1;
+INSERT INTO FinancialTransactions_OrderDetails (OrderId, ProductId, Quantity, Price)
+VALUES 
+    (1, 1, 5, 50.00),
+    (2, 3, 3, 30.00),
+    (5, 8, 2, 20.00),
+    (3, 2, 4, 40.00),
+    (7, 5, 6, 60.00),
+    (9, 10, 1, 10.00),
+    (4, 4, 7, 70.00),
+    (6, 7, 8, 80.00),
+    (8, 9, 9, 90.00),
+    (10, 6, 10, 100.00),
+    (11, 1, 5, 50.00); 
+INSERT INTO FinancialTransactions_Payments (UserId, OrderId, PaymentAmount)
+SELECT 
+	t.userid,
+	t.orderid,
+	round((t.od_sum - (random() * t.od_sum))::numeric, 2) AS random_value
+FROM (
+	SELECT 
+		o.userid, 
+		o.orderid, 
+		sum(od.price * od.quantity) AS od_sum
+	FROM financialtransactions_orders o 
+	INNER JOIN financialtransactions_orderdetails od ON od.orderid = o.orderid
+	GROUP BY 
+		o.userid, 
+		o.orderid
+	ORDER BY o.userid
+) t;
 
 -- Generate SQL commands for filling tables (INSERT command): 
 -- you need to fill in the tables related to payment: FinancialTransactions_Payments, FinancialTransactions_PaymentMethods, FinancialTransactions_PaymentHistory.
@@ -206,8 +218,3 @@ VALUES
 (8, 3, 'Shipped'),
 (9, 4, 'Delivered'),
 (10, 5, 'Canceled');
-
--- Additional queries.
-INSERT INTO FinancialTransactions_Orders (UserId) VALUES (4);
-INSERT INTO FinancialTransactions_OrderDetails (OrderId, ProductId, Quantity, Price)
-VALUES (11, 1, 2, 1100.00), (11, 3, 1, 450.00), (11, 9, 1, 61.00);
