@@ -1,5 +1,6 @@
 using System.Collections.Generic; 
 using System.Linq; 
+using System.Text;
 
 namespace Studying.Leetcode.Trees
 {
@@ -104,11 +105,13 @@ namespace Studying.Leetcode.Trees
             /// </summary>
             public string ToChildString()
             {
-                string result = "["; 
-                foreach (var child in Childs) 
-                    result += child.Value + ","; 
-                result += "]"; 
-                return result.Replace(",]", "]"); 
+                StringBuilder result = new StringBuilder("[");
+                foreach (var child in Childs)
+                {
+                    result.Append(child.Value).Append(",");
+                }
+                result.Append("]");
+                return result.ToString().Replace(",]", "]");
             }
 
             /// <summary>
@@ -116,14 +119,14 @@ namespace Studying.Leetcode.Trees
             /// </summary>
             public string ToChildRecursiveString()
             {
-                string result = string.Empty; 
-                foreach (var child in Childs) 
+                StringBuilder result = new StringBuilder();
+                foreach (var child in Childs)
                 {
-                    result += "[value: " + child.Value + ", childs: ";
-                    result += child.Childs.Count == 0 ? child.ToChildString() : child.ToChildRecursiveString();
-                    result += "],";
+                    result.Append("[value: ").Append(child.Value).Append(", childs: ");
+                    result.Append(child.Childs.Count == 0 ? child.ToChildString() : child.ToChildRecursiveString());
+                    result.Append("],");
                 }
-                return result.Replace(",]", "]"); 
+                return result.ToString().Replace(",]", "]");
             }
             #endregion  // ToString methods
         }

@@ -61,6 +61,7 @@ namespace Studying.Leetcode.Trees
             var rootList02 = new List<int?> {1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14};
             var root02 = CreateRoot(rootList02);
             var output02 = LevelOrder(root02);
+            PrintResult(output02);
         }
 
         private Node CreateRoot(IList<int?> elements)
@@ -127,19 +128,11 @@ namespace Studying.Leetcode.Trees
             System.Console.Write("[");
             foreach (var nestedList in list)
             {
-                PrintList(nestedList);
+                System.Console.Write("[");
+                System.Console.Write(string.Join(" ", nestedList));
+                System.Console.Write("]");
             }
             System.Console.WriteLine("]");
-        }
-
-        private void PrintList(IList<int> list)
-        {
-            System.Console.Write("[");
-            for (int i = 0; i < list.Count; i++)
-            {
-                System.Console.Write(list[i] + (i != list.Count - 1 ? " " : ""));
-            }
-            System.Console.Write("]");
         }
     }
 }
