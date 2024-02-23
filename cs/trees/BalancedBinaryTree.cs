@@ -56,7 +56,9 @@ namespace Studying.Leetcode.Trees
             // Output: true
             var input01 = new List<int?> {3,9,20,null,null,15,7};
             var root01 = InitializeBalancedTree(input01);
+            var height01 = GetHeight(root01);
             var result01 = IsBalanced(root01);
+            System.Console.WriteLine("height01: " + height01);
             System.Console.WriteLine("result01: " + result01);
             PrintBinaryTree(root01);
 
@@ -65,7 +67,9 @@ namespace Studying.Leetcode.Trees
             // Output: false
             var input02 = new List<int?> {1,2,2,3,3,null,null,4,4};
             var root02 = InitializeBalancedTree(input02);
+            var height02 = GetHeight(root02);
             var result02 = IsBalanced(root02);
+            System.Console.WriteLine("height02: " + height02);
             System.Console.WriteLine("result02: " + result02);
             PrintBinaryTree(root02);
 
@@ -74,7 +78,9 @@ namespace Studying.Leetcode.Trees
             // Output: true
             var input03 = new List<int?> {};
             var root03 = InitializeBalancedTree(input03);
+            var height03 = GetHeight(root03);
             var result03 = IsBalanced(root03);
+            System.Console.WriteLine("height03: " + height03);
             System.Console.WriteLine("result03: " + result03);
             PrintBinaryTree(root03);
         }
@@ -114,11 +120,36 @@ namespace Studying.Leetcode.Trees
         }
 
         /// <summary>
-        /// 
+        /// Checks if the binary tree is height-balanced.
         /// </summary>
         private bool IsBalanced(TreeNode root)
         {
-            return true;
+            if (root == null)
+            {
+                return true;
+            }
+
+            int leftHeight = GetHeight(root.left);
+            int rightHeight = GetHeight(root.right);
+
+            if (System.Math.Abs(leftHeight - rightHeight) <= 1 && IsBalanced(root.left) && IsBalanced(root.right))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Get the height of the tree node.
+        /// </summary>
+        private int GetHeight(TreeNode node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+            return 1 + System.Math.Max(GetHeight(node.left), GetHeight(node.right));
         }
 
         private void PrintBinaryTree(TreeNode node)
